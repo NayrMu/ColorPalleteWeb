@@ -16,6 +16,20 @@ body {
 	height: 95%;
 	float: left;
 	margin-top: 5vh;
+	display: flex;
+	flex
+}
+
+#palleteColor1 {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.palleteColor p{
+	font-size: 5vw;
 }
 
 #dashboard {
