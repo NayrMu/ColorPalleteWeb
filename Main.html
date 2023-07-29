@@ -4,7 +4,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Color Pallete Webpage</title>
-		<link href="main.css">
+		<link rel="stylesheet" type="text/css" href="main.css">
+		<script src="main.js"></script>
 	</head>
 	<body>
 		<div id="navbar">
@@ -12,6 +13,16 @@
 		<div id="colorCanvas">
 		</div>
 		<div id="dashboard">
+			<div id="row1">
+				<button onclick="randomButton(this)" id="randombutton" class="dashboardButton">Random</button>
+			</div>
+			<div id="row2">
+				<select name="Pallete Restrictions" id="pRestrictions">
+					<option></option>
+					<option></option>
+					<option></option>
+				</select>
+			</div>
 		</div>
 	</body>
 </html>
