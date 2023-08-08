@@ -1,7 +1,15 @@
-function randomButton(id) {
-	color = randomColor();
-	document.getElementById("palleteColor1").style.backgroundColor = color;
-	document.getElementById("palleteColor1Text").innerHTML = color;
+let numColors = 0;
+
+
+function randomButton() {
+	
+	palleteColors = document.querySelectorAll(".palleteColor");
+	for (var i =0; i < palleteColors.length; i++) {
+		color = randomColor();
+		console.log("is this " + palleteColors[i].style.backgroundColor);
+		palleteColors[i].style.backgroundColor = color;
+		palleteColors[i].innerHTML = color;
+	}
 }
 
 function randomColor() {
@@ -13,5 +21,21 @@ function randomColor() {
 	}
 	console.log(color);
 	return color;
+}
+
+function addColor() {
+
+	
+	const colorCanvas = document.getElementById("colorCanvas");
+
+	const template = document.getElementById("templateColor");
+
+	const clone = template.content.cloneNode(true);
+
+	const div = clone.querySelector("#palleteColor1")
+	colorCanvas.appendChild(clone);
+	numColors += 1;
+
+	randomButton();
 }
 

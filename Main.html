@@ -11,16 +11,21 @@
 		<div id="navbar">
 		</div>
 		<div id="colorCanvas">
-			<div id="palleteColor1" class="palleteColor">
-				<p id="palleteColor1Text"></p>
-			</div>
+			<template id="templateColor">
+				<div id="palleteColor" class = "palleteColor">
+				</div>
+			</template>
 		</div>
 		<div id="dashboard">
 			<div id="row1">
-				<button onclick="randomButton(this)" id="randombutton" class="dashboardButton">Random</button>
+				<button onclick="randomButton()" id="randombutton" class="dashboardButton">Randomize</button>
 			</div>
-			<div id="row2">
-				<select name="Pallete Restrictions" id="pRestrictions">
+			<div id=row2>
+				<button onclick="addColor()" id="addColorButton" class="dashboardButton">Add Color</button>
+				<button onclick="subtractColor()" id="subtractColorButton" class="dashboardButton">Subtract Color</button>
+			</div>
+			<div id="row3">
+				<select name="Pallete Restrictions" id="pRestrictions" class="dashboardButton">
 					<option></option>
 					<option></option>
 					<option></option>
