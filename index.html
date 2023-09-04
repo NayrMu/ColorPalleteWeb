@@ -5,26 +5,27 @@
 		<meta charset="utf-8">
 		<title>Color Pallete Webpage</title>
 		<link rel="stylesheet" type="text/css" href="main.css">
+		<script src="https://kit.fontawesome.com/1f310bb7f4.js" crossorigin="anonymous"></script>
 		<script src="main.js"></script>
 	</head>
 	<body>
-		<div id="navbar">
-		</div>
-		<div id="colorCanvas">
+		<div class="colorCanvas">
 			<template id="templateColor">
 				<div id="palleteColor" class = "palleteColor">
+					<p></p>
+					<i class="fa-solid fa-lock-open"></i>
 				</div>
 			</template>
 		</div>
 		<div id="dashboard">
-			<div id="row1">
+			<div class="row">
 				<button onclick="randomButton()" id="randombutton" class="dashboardButton">Randomize</button>
 			</div>
-			<div id=row2>
+			<div class="row">
 				<button onclick="addColor()" id="addColorButton" class="dashboardButton">Add Color</button>
 				<button onclick="subtractColor()" id="subtractColorButton" class="dashboardButton">Subtract Color</button>
 			</div>
-			<div id="row3">
+			<div class="row">
 				<select name="Pallete Restrictions" id="pRestrictions" class="dashboardButton">
 					<option></option>
 					<option></option>

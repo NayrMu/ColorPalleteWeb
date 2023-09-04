@@ -1,21 +1,14 @@
 body {
 	margin: 0;
-	overflow-y: scroll;
+	overflow: hidden;
 }
 
-#navbar {
-	background-color: #595959;
+
+.colorCanvas {
+	background-color: #2f2f2f;
 	width: 100%;
-	height: 5%;
-	position: fixed;
-}
-
-#colorCanvas {
-	background-color: #ededed;
-	width: 80%;
-	height: 95%;
+	height: 100vh;
 	float: left;
-	margin-top: 5vh;
 	display: flex;
 	flex
 }
@@ -32,33 +25,18 @@ body {
 
 
 #dashboard {
-	background-color: #1f1f1f;
-	margin-top: 5vh;
+	position: fixed;
+	right: 0;
+	background-color: transparent;
 	width: 20%;
-	height: 95%;
+	height: 40vh;
 	float: right;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 }
 
-#row1 {
-	width: 94%;
-	display: flex;
-	flex-direction: row;
-	margin: 3%;
-	align-items: stretch;
-}
-
-#row2 {
-	width: 94%;
-	display: flex;
-	flex-direction: row;
-	margin: 3%;
-	align-items: stretch;
-}
-
-#row3 {
+.row {
 	width: 94%;
 	display: flex;
 	flex-direction: row;
@@ -67,9 +45,25 @@ body {
 }
 
 .dashboardButton {
-	background-color: #5adb9f;
+	background-color: #f1f1ed;
+	height: 3vh;
 	width: 100%;
-	border-radius: 7px;
-	border: ridge;
-	border-color: black;
+	border-radius: 3px;
+	border: 1px solid #444444;
+	margin: 0.25em;
+}
+.dashboardButton:hover {
+	background-color: #d0d0c5;
+}
+
+.palleteColor p {
+	background-color: #fafaf0;
+	border-radius: 23px;
+}
+
+i {
+	padding: 0.4em;
+}
+i:hover {
+	cursor: pointer;
 }
