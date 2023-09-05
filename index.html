@@ -1,4 +1,4 @@
-<!DOCUMENT html>
+<!DOCTYPE html>
 
 <html>
 	<head>
@@ -17,7 +17,7 @@
 				</div>
 			</template>
 		</div>
-		<div id="dashboard">
+		<div class="dashboard">
 			<div class="row">
 				<button onclick="randomButton()" id="randombutton" class="dashboardButton">Randomize</button>
 			</div>
@@ -26,11 +26,14 @@
 				<button onclick="subtractColor()" id="subtractColorButton" class="dashboardButton">Subtract Color</button>
 			</div>
 			<div class="row">
-				<select name="Pallete Restrictions" id="pRestrictions" class="dashboardButton">
-					<option></option>
-					<option></option>
+				<select name="Pallete Restrictions" class="dashboardButton pRestrictions">
+					<option>Complementary</option>
+					<option>Split-Complementary</option>
 					<option></option>
 				</select>
+			</div>
+			<div class="row">
+				<button class="dashboardButton" onclick="generateFromRestrict()">Generate</button>
 			</div>
 		</div>
 	</body>

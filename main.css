@@ -24,7 +24,7 @@ body {
 }
 
 
-#dashboard {
+.dashboard {
 	position: fixed;
 	right: 0;
 	background-color: transparent;
