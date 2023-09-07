@@ -1,5 +1,5 @@
 let numColors = 0;
-const maxColors = 6;
+const maxColors = 5;
 
 function randomButton() {
 	palleteColors = document.querySelectorAll(".palleteColor");
@@ -10,60 +10,61 @@ function randomButton() {
 			
 			color = randomColor();
 			palleteColor.style.backgroundColor = color;
-			p.innerHTML = color;
+			p.innerHTML = "rgb(" + HexToRGB(color) + ")";
 		}
 	}
 }
 
 function generateFromRestrict() {
 	const restriction = document.querySelector(".dashboard .row .pRestrictions")
+	palleteColors = document.querySelectorAll(".palleteColor");
+	if (palleteColors.length == 1) {
+		if (restriction.value === "Complementary") {
+			palleteColors = document.querySelectorAll(".palleteColor");
+			palleteColors[0].dataset.isLocked = "true"
+			addColor();
+			palleteColors[0].dataset.isLocked = "false"
+			palleteColors = document.querySelectorAll(".palleteColor");
 
-	if (restriction.value === "Complementary") {
-		palleteColors = document.querySelectorAll(".palleteColor");
-		palleteColors[0].dataset.isLocked = "true"
-		addColor();
-		palleteColors[0].dataset.isLocked = "false"
-		palleteColors = document.querySelectorAll(".palleteColor");
+			p = palleteColors[1].querySelector("p");
 
-		p = palleteColors[1].querySelector("p");
+			const rgbValues = palleteColors[0].style.backgroundColor
+				.slice(4, -1)
+				.split(",")
+				.map(value => parseInt(value.trim(), 10));
 
-		const rgbValues = palleteColors[0].style.backgroundColor
-			.slice(4, -1)
-			.split(",")
-			.map(value => parseInt(value.trim(), 10));
+			let color = complementary(ToHSL(normalizeVals(rgbValues)));
+			color = "rgb(" + ToRGB(color) + ")";
+			palleteColors[1].style.backgroundColor = color;
+			p.innerHTML = color;
 
-		let color = complementary(ToHSL(normalizeVals(rgbValues)));
-		color = "rgb(" + ToRGB(color) + ")";
-		palleteColors[1].style.backgroundColor = color;
-		p.innerHTML = color;
+		}	else if (restriction.value === "Split-Complementary") {
+			palleteColors = document.querySelectorAll(".palleteColor");
+			palleteColors[0].dataset.isLocked = "true"
+			addColor();
+			addColor();
+			palleteColors[0].dataset.isLocked = "false"
+			palleteColors = document.querySelectorAll(".palleteColor");
 
-	}	else if (restriction.value === "Split-Complementary") {
-		palleteColors = document.querySelectorAll(".palleteColor");
-		palleteColors[0].dataset.isLocked = "true"
-		addColor();
-		addColor();
-		palleteColors[0].dataset.isLocked = "false"
-		palleteColors = document.querySelectorAll(".palleteColor");
+			p1 = palleteColors[1].querySelector("p");
+			p2 = palleteColors[2].querySelector("p");
 
-		p1 = palleteColors[1].querySelector("p");
-		p2 = palleteColors[2].querySelector("p");
+			const rgbValues = palleteColors[0].style.backgroundColor
+				.slice(4, -1)
+				.split(",")
+				.map(value => parseInt(value.trim(), 10));
 
-		const rgbValues = palleteColors[0].style.backgroundColor
-			.slice(4, -1)
-			.split(",")
-			.map(value => parseInt(value.trim(), 10));
-
-		colors = SplitComplementary(ToHSL(normalizeVals(rgbValues)))
-		colors[0] = "rgb(" + ToRGB(colors[0]) + ")";
-		colors[1] = "rgb(" + ToRGB(colors[1]) + ")";
-		
-		palleteColors[1].style.backgroundColor = colors[0];
-		palleteColors[2].style.backgroundColor = colors[1];
-		
-		p1.innerHTML = colors[0];
-		p2.innerHTML = colors[1];
+			colors = SplitComplementary(ToHSL(normalizeVals(rgbValues)))
+			colors[0] = "rgb(" + ToRGB(colors[0]) + ")";
+			colors[1] = "rgb(" + ToRGB(colors[1]) + ")";
+			
+			palleteColors[1].style.backgroundColor = colors[0];
+			palleteColors[2].style.backgroundColor = colors[1];
+			
+			p1.innerHTML = colors[0];
+			p2.innerHTML = colors[1];
+		}
 	}
-
 
 }
 
@@ -141,7 +142,7 @@ function lockFunc(lock, div) {
 
 function HexToDig(hexVal) {
 	hexVal = hexVal.toLowerCase();
-	let conversionString = "123456789abcdef";
+	let conversionString = "0123456789abcdef";
 	let decVal = 0;
 
 	for (i = 0; i < hexVal.length; i++) {
@@ -155,6 +156,9 @@ function HexToDig(hexVal) {
 }
 
 function HexToRGB(hexVal) {
+	console.log(hexVal);
+	hexVal = hexVal.replace(/#/g, '');
+	console.log(hexVal);
 	let itr = 0;
 	let newString = [];
 	let returnString = [];
